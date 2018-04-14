@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatables
 
+  has_many :registrations
+  has_many :games_played, :through => :registrations, :source => :game
+  
   validates :uname, :presence => true
   validates :name,  :presence => true
 
@@ -14,5 +17,9 @@ class User < ApplicationRecord
       user.name = auth.info.name  
       user.uname = auth.info.email 
     end
+  end
+
+  def games_created
+    Game.where(:creator_id => id)
   end
 end
