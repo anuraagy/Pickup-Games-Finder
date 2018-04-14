@@ -130,6 +130,7 @@ GEM
     ffi (1.9.23)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    gmaps4rails (2.1.2)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
@@ -350,6 +351,7 @@ DEPENDENCIES
   devise
   factory_bot
   faker
+  gmaps4rails
   haml
   haml-rails
   jbuilder

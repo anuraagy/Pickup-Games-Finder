@@ -13,7 +13,6 @@ gem 'config'
 gem "rspec"
 gem 'rspec-rails'
 gem "factory_bot"
-gem 'faker'
 gem 'bcrypt'
 gem 'mailgun-ruby'
 gem 'bootstrap'
@@ -30,6 +29,7 @@ gem 'faker'
 gem 'clearbit'
 gem 'news-api'
 gem 'omniauth-facebook'
+gem 'gmaps4rails'
 
 gem 'sass-rails'
 gem 'sprockets-rails'
