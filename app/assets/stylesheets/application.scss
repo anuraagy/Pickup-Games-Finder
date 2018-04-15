@@ -20,6 +20,8 @@
 
 body {
   background-color: #f5f5f5;
+  // min-height: 100% !important;
+  height: 100% !important;
 }
 
 .section {
@@ -52,3 +54,10 @@ body {
 .title {
   margin-bottom: 20px;
 }
+
+.ml-auto .dropdown-menu {
+    left: auto !important;
+    right: 0px;
+  }
+
+

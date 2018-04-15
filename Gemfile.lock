@@ -128,6 +128,7 @@ GEM
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.23)
+    geocoder (1.4.7)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     gmaps4rails (2.1.2)
@@ -351,6 +352,7 @@ DEPENDENCIES
   devise
   factory_bot
   faker
+  geocoder
   gmaps4rails
   haml
   haml-rails

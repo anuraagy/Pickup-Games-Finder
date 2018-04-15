@@ -30,6 +30,8 @@ gem 'clearbit'
 gem 'news-api'
 gem 'omniauth-facebook'
 gem 'gmaps4rails'
+gem 'textacular'
+gem 'geocoder'
 
 gem 'sass-rails'
 gem 'sprockets-rails'

@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "pages#index"
 
-  resources :games
+  resources :games do 
+    get 'search', :on => :collection
+  end
 end

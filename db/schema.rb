@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180414191836) do
+ActiveRecord::Schema.define(version: 20180415184559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "games", force: :cascade do |t|
     t.string "address", null: false
@@ -25,6 +26,8 @@ ActiveRecord::Schema.define(version: 20180414191836) do
     t.string "state", default: "Not Started", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "registrations", force: :cascade do |t|

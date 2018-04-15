@@ -2,8 +2,16 @@ class GamesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @game = Game.all
+    @games = Game.all
 
+    respond_to do |format|
+      format.js { render layout: false, content_type: 'text/javascript'}
+      format.json { render :json => @games.as_json }
+    end
+  end
+
+  def search
+    @games = Game.all
   end
 
   def new
