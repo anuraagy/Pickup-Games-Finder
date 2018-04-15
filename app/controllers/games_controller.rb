@@ -11,7 +11,16 @@ class GamesController < ApplicationController
   end
 
   def search
-    @games = Game.all
+    if params[:query] != ""
+      @issues = Game.fuzzy_search(:title => params[:query])
+    else
+      @issues = Game.all
+    end
+
+    respond_to do |format|
+      format.js { render layout: false, content_type: 'text/javascript'}
+      format.json {}
+    end
   end
 
   def new
@@ -55,6 +64,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:address, :team_one_name, :team_two_name, :team_one_score, :team_two_score, :creator_id, :state)
+    params.require(:game).permit(:title, :description, :address, :team_one_name, :team_two_name, :team_one_score, :team_two_score, :creator_id, :state, :start_time)
   end
 end

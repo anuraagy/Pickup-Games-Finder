@@ -5,18 +5,31 @@
 class Pages
   constructor: (@element) ->
     @map = @element.find("#map")
+    @search = @element.find("#games-search")
+
+    @search.on "keyup", @filterGames
 
     @getLocation()
     @getGames()
 
   
+  filterGames: =>
+    query = @search.val()
+
+    $.ajax
+      url: "/games/search"
+      data: { query: query }
+      success: (console.log "hello")
+      dataType: "script"
+
   addMarkers: (data) =>
     games = JSON.parse(data)
     markers = []
 
     for game, i in games
       if game.latitude != null
-        hash = {"lat": game.latitude, "lng": game.longitude, "infowindow": "<a href='/games/#{game.id}'>Game #{game.id}</a>"}
+        infoHtml = "#{game.title}<br><br>#{game.description}<br><br>Starts at: #{game.start_time}<br><br><a href='/games/#{game.id}'>Join Game</a>"
+        hash = {"lat": game.latitude, "lng": game.longitude, "infowindow": infoHtml}
         console.log hash
         markers.push(hash)
 

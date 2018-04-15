@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   resources :games do 
     get 'search', :on => :collection
   end
+
+  get '/search', :to => "pages#search"
 end

@@ -1,0 +1,7 @@
+.container
+  %h1 Games
+
+  = text_field_tag :search, "", :placeholder => 'Search games', :class => "form-control", :id => "games-search"
+
+  .row.section.games
+    = render @games

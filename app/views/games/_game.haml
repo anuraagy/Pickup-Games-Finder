@@ -1,0 +1,13 @@
+.col-md-4
+  .card.border-primary.mb-3{:style => "max-width: 20rem; height => 500px !important;"}
+    .card-header
+      = game.title
+    .card-body
+      %h4.card-title
+        = "#{game.description[0..50]}..."
+      %p.card-text
+        %p
+          = "Start time: #{game.start_time.strftime('%c')}"
+
+    .card-footer.text-muted
+      = link_to "Join Game", game

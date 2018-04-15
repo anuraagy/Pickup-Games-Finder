@@ -4,6 +4,12 @@
     %span.navbar-toggler-icon
   #navbarColor02.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
+      %li.nav-item
+        = link_to "Game Map", root_path, :class => "nav-link"
+      %li.nav-item
+        = link_to "Search games", search_path, :class => "nav-link"
+      %li.nav-item
+        = link_to "Game History", root_path, :class => "nav-link"
     - if current_user
       %ul.navbar-nav.ml-auto.navbar-right
         %li.nav-item
@@ -12,7 +18,7 @@
           %a.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}   
             = current_user.name
           .dropdown-menu
-            = link_to "Profile", edit_user_registration_path, :class => "dropdown-item"
+            = link_to "Edit Account", edit_user_registration_path, :class => "dropdown-item"
             = link_to "Logout", destroy_user_session_path, :method => :DELETE, :class => "dropdown-item"
     - else
       %ul.navbar-nav.ml-auto.navbar-right
