@@ -1,2 +1,12 @@
-%div{:style => "width: 100%; height:100%; margin-top: -50px;"}
-  #map{:style => "width: 100%; height: 648px;"}
+- if current_user
+  %div{:style => "width: 100%; height:100%; margin-top: -50px;"}
+    #map{:style => "width: 100%; height: 648px;"}
+- else 
+  .container
+    .jumbotron
+      %h1.display-3 Pick Up Game Finder!
+      %p.lead This is a simple application that will help you find pick up basketball games in your local area.
+      %hr.my-4/
+      %p.lead
+        %a.btn.btn-primary.btn-lg{:href => "/users/sign_up", :role => "button"} Sign up today
+

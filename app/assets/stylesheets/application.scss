@@ -14,13 +14,16 @@
  *= require_self
  */
 
-@import "bootswatch/materia/variables";
+@import "bootswatch/yeti/variables";
 @import "bootstrap";
-@import "bootswatch/materia/bootswatch";
+@import "bootswatch/yeti/bootswatch";
 
-body {
+.main {
   background-color: #f5f5f5;
-  // min-height: 100% !important;
+  background-image: url("https://i.ytimg.com/vi/xEe4C4ijvp4/maxresdefault.jpg");
+  background-size: cover;
+  background-position: top center;
+  // background-repeat: no-repeat;
   height: 100% !important;
 }
 
@@ -56,8 +59,13 @@ body {
 }
 
 .ml-auto .dropdown-menu {
-    left: auto !important;
-    right: 0px;
-  }
+  left: auto !important;
+  right: 0px;
+}
+
+.jumbotron {
+  background-color:rgba(238, 238, 238, 0.9);
+}
+
 
 
