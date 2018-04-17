@@ -37,6 +37,45 @@ class GamesController < ApplicationController
     end
   end
 
+  def join_game
+    @game = Game.find(params[:id])
+    @user = current_user
+
+    @game.players << @user
+  end
+
+  def leave_game
+    @game = Game.find(params[:id])
+    @user = current_user
+
+    @game.players.delete(@user)
+  end
+
+  def remove_player
+    @game = Game.find(params[:id])
+    @user = User.find(params[:user_id])
+
+    if @game.check_admin?(current_user)
+      @game.players.delete(@user)
+    end
+  end
+
+  def start_game
+    @game = Game.find(params[:id])
+
+    if @game.check_admin?(current_user)
+      @game.state = "In Progress"
+    end
+  end
+
+  def end_game
+    @game = Game.find(params[:id])
+
+    if @game.check_admin?(current_user)
+      @game.state = "Completed"
+    end
+  end
+
   def edit
     @game = Game.find(params[:id])
   end
