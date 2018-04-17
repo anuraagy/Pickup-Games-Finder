@@ -1,16 +1,40 @@
 .container
-  = @game.address
-  %br
-  = @game.creator.name
-  = @game.title
-  = @game.description
-  = @game.team_one_name
-  = @game.team_two_name
-  = @game.start_time
-  = @game.state
+  .row
+    .col-md-8
+      %h1
+        = @game.title
+        %span.badge.badge-pill.badge-primary
+          = @game.state
+      = link_to @game.address, "https://maps.google.com/?q=#{@game.address}"
+      %p
+        = @game.creator.name
+      %p
+        = @game.description
+      %p
+        Team 1:
+        = @game.team_one_name
+      %p
+        Team 2:
+        = @game.team_two_name
+      %p
+        Starting at: 
+        = @game.start_time.strftime("%c")
 
-  %button.btn.btn-primary{:type => "button"} Join Game
-  %button.btn.btn-secondary{:type => "button"} Leave Game
-  %button.btn.btn-danger{:type => "button"} Remove Player
-  %button.btn.btn-primary.btn-lg{:type => "button"} Start Game
-  %button.btn.btn-primary.btn-lg{:type => "button"} End Game
+      - if !@game.check_admin?(current_user)
+        - if @game.players.includes(current_user)
+          = link_to "Join Game", "javascript:void(0)", :class => "btn btn-primary", :id => "join-game"
+        - else
+          = link_to "Leave Game", "javascript:void(0)", :class => "btn btn-danger", :id => "leave-game"
+
+      - if @game.check_admin?(current_user)
+        - if @game.state == "Not Started"
+          = link_to "Start Game", "javascript:void(0)", :class => "btn btn-danger", :id => "start-game"
+        - elsif @game.state == "In Progress"
+          = link_to "End Game", "javascript:void(0)", :class => "btn btn-danger", :id => "end-game"
+
+    .col-md-4
+      %h1 Lobby
+      - @game.players.each do |player|
+        = player.name
+        - if @game.check_admin?(current_user)
+          = link_to "Remove Player", "javascript:void(0)", :class => "btn btn-primary", :id => "remove-player"
