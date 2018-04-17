@@ -24,6 +24,10 @@ class Game < ApplicationRecord
     Game.where('start_time > ?', DateTime.now)
   end
 
+  def check_admin?(user)
+    creator == user
+  end
+
   def check_lat_long
     errors.add(:address, ": please enter a proper address") if latitude == nil || longitude == nil
   end

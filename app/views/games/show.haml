@@ -2,3 +2,15 @@
   = @game.address
   %br
   = @game.creator.name
+  = @game.title
+  = @game.description
+  = @game.team_one_name
+  = @game.team_two_name
+  = @game.start_time
+  = @game.state
+
+ %button.btn.btn-primary{:type => "button"} Join Game
+ %button.btn.btn-secondary{:type => "button"} Leave Game
+ %button.btn.btn-danger{:type => "button"} Remove Player
+
+
