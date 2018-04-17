@@ -1,12 +1,12 @@
-10000.times do |index|
-  # user_params = {
-  #   :name               => Faker::Name.unique.name, 
-  #   :email              => Faker::Internet.unique.email, 
-  #   :password           => "password",
-  #   :uname              => SecureRandom.urlsafe_base64(24),
-  # }
+100.times do |index|
+  user_params = {
+    :name               => Faker::Name.unique.name, 
+    :email              => Faker::Internet.unique.email, 
+    :password           => "password",
+    :uname              => SecureRandom.urlsafe_base64(24),
+  }
 
-  # user = User.create!(user_params)
+  user = User.create!(user_params)
 
   game_params = {
     :title               => Faker::Name.unique.name, 
