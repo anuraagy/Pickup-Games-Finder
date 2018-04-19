@@ -37,6 +37,22 @@ class GamesController < ApplicationController
     end
   end
 
+  def join_leave
+    @game = Game.find(params[:game_id])
+    # binding.pry
+    if @game.players.include?(current_user)
+      @game.players.delete(current_user)
+    else
+      Registration.create(:user_id => current_user.id, :game_id => @game.id)
+    end
+
+    respond_to do |format|
+      format.js { render layout: false, content_type: 'text/javascript'}
+      format.json {}
+      format.html {render layout: false, content_type: 'text'}
+    end
+  end
+
   def join_game
     @game = Game.find(params[:id])
     @user = current_user

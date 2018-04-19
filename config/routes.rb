@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :games do 
     get 'search',          :on => :collection
+    post 'join_leave',     :on => :collection
+    
     post 'join_game',      :on => :member
     post 'leave_game',     :on => :member
     post 'remove_player',  :on => :member
