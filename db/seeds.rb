@@ -7,7 +7,7 @@ user_params = {
 
 user = User.create!(user_params)
 
-20.times do |index|  
+5.times do |index|  
   game_params = {
     :title               => "Game #{index}", 
     :description         => Faker::Lorem.paragraph, 
