@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
   has_many :registrations
-  has_many :players, :through => :registrations, :sosurce => :user
+  has_many :players, :through => :registrations, :source => :user
 
   validates :title,           :presence => true
   validates :description,     :presence => true
@@ -23,9 +23,12 @@ class Game < ApplicationRecord
   end
 
   def self.set_expiries
-    Game.not_started.each do |game|
-      if game.start_time < DateTime.now
+    puts "SET EXPIRE"
+
+    Game.where(:state => "Not Started").each do |game|
+      if game.start_time < Time.now
         game.state = "In Progress"
+        game.save
       end
     end
   end

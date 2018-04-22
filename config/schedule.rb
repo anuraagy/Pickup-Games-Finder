@@ -19,7 +19,6 @@
 
 every 1.minute do
   runner "Game.set_expiries"
-  puts "Set expire"
 end
 
 # Learn more: http://github.com/javan/whenever

@@ -21,7 +21,7 @@
         = f.hidden_field :creator_id, :value => current_user.id
       .field
         = f.label :start_time, :class => "col-form-label"
-        = f.datetime_field :start_time, autofocus: true, :class => "form-control "
+        = f.datetime_field :start_time, :value => Time.now, autofocus: true, :class => "form-control "
       .actions
         %br
         = f.submit "Submit", :class => "btn btn-primary"
