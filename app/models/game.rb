@@ -1,6 +1,6 @@
 class Game < ApplicationRecord
   has_many :registrations
-  has_many :players, :through => :registrations, :source => :user
+  has_many :players, :through => :registrations, :sosurce => :user
 
   validates :title,           :presence => true
   validates :description,     :presence => true
@@ -20,6 +20,14 @@ class Game < ApplicationRecord
 
   def self.not_started
     Game.where(:state => "Not Started").where('start_time > ?', DateTime.now)
+  end
+
+  def self.set_expiries
+    Game.not_started.each do |game|
+      if game.start_time < DateTime.now
+        game.state = "In Progress"
+      end
+    end
   end
 
   def check_admin?(user)

@@ -32,6 +32,7 @@ gem 'omniauth-facebook'
 gem 'gmaps4rails'
 gem 'textacular'
 gem 'geocoder'
+gem 'whenever'
 
 gem 'sass-rails'
 gem 'sprockets-rails'
@@ -40,7 +41,6 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
-gem 'textacular'
 gem 'pry'
 
 group :development, :test do
