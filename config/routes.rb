@@ -7,14 +7,15 @@ Rails.application.routes.draw do
   root "pages#index"
 
   resources :games do 
-    get 'search',          :on => :collection
+    get  'search',         :on => :collection
     post 'join_leave',     :on => :collection
+    post 'remove_player',  :on => :collection
+
     
-    post 'join_game',      :on => :member
-    post 'leave_game',     :on => :member
-    post 'remove_player',  :on => :member
-    post 'start_game',     :on => :member
-    post 'end_game',       :on => :member
+    post 'join',      :on => :member
+    post 'leave',     :on => :member
+    post 'start',     :on => :member
+    post 'end',       :on => :member
   end
 
   get '/search', :to => "pages#search"

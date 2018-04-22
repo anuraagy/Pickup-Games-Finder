@@ -81,7 +81,7 @@ class GamesController < ApplicationController
   end
 
   def remove_player
-    @game = Game.find(params[:id])
+    @game = Game.find(params[:game_id])
     @user = User.find(params[:user_id])
 
     if @game.check_admin?(current_user)
@@ -95,31 +95,29 @@ class GamesController < ApplicationController
     end
   end
 
-  def start_game
+  def start
     @game = Game.find(params[:id])
 
     if @game.check_admin?(current_user)
       @game.state = "In Progress"
-    end
+      @game.save
 
-    respond_to do |format|
-      format.js { render layout: false, content_type: 'text/javascript'}
-      format.json {}
-      format.html {render layout: false, content_type: 'text'}
+      redirect_to @game
+    else
+      render @game, :notice => "You are not an admin"
     end
   end
 
-  def end_game
+  def end
     @game = Game.find(params[:id])
 
     if @game.check_admin?(current_user)
       @game.state = "Completed"
-    end
+      @game.save
 
-    respond_to do |format|
-      format.js { render layout: false, content_type: 'text/javascript'}
-      format.json {}
-      format.html {render layout: false, content_type: 'text'}
+      redirect_to @game
+    else
+      render @game, :notice => "You are not an admin"
     end
   end
 

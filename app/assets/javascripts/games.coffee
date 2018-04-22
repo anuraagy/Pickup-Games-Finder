@@ -34,14 +34,13 @@ class Games
     else 
       @join_leave_button.text("Join Game")
       $("#player-#{@user.val()}").remove()
-     
-
-  startGame: =>
+    
+  removePlayer: =>
     $.ajax
       type: 'POST'
-      url: "/games/search"
-      data: { query: query }
-      success: (console.log "hello")
+      url: "/games/remove_player"
+      data: { game_id: @game.val(), user_id: this.val() }
+      success: (console.log "player removed")
       dataType: "script"
 
   endGame: =>
