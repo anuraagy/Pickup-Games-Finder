@@ -9,13 +9,12 @@ Rails.application.routes.draw do
   resources :games do 
     get  'search',         :on => :collection
     post 'join_leave',     :on => :collection
-    post 'remove_player',  :on => :collection
 
-    
-    post 'join',      :on => :member
-    post 'leave',     :on => :member
-    post 'start',     :on => :member
-    post 'end',       :on => :member
+    post 'remove_player',  :on => :member
+    post 'join',           :on => :member
+    post 'leave',          :on => :member
+    post 'start',          :on => :member
+    post 'end',            :on => :member
   end
 
   get '/search', :to => "pages#search"

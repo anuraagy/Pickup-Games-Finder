@@ -41,6 +41,6 @@
         %li.list-group-item.d-flex.justify-content-between.align-items-center{:id => "player-#{player.id}"}
           = player.name
         - if @game.check_admin?(current_user) && !@game.completed?
-          = link_to "Remove Player", "javascript:void(0)", :class => "btn btn-primary", :class => "remove-player", :id => "player-remove-#{player.id}"
+          = link_to "Remove Player", remove_player_game_path(@game, :user_id => player.id), :class => "btn btn-primary", :id => "player-remove-#{player.id}", :method => :POST
           = hidden_field_tag :player_id, player.id, :class => "player-remove-hidden"
 

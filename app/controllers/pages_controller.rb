@@ -12,6 +12,6 @@ class PagesController < ApplicationController
   end
 
   def search
-    @games = Game.all
+    @games = Game.not_started
   end
 end

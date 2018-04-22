@@ -19,7 +19,7 @@ class Game < ApplicationRecord
   end
 
   def self.not_started
-    Game.where('start_time > ?', DateTime.now)
+    Game.where(:state => "Not Started").where('start_time > ?', DateTime.now)
   end
 
   def check_admin?(user)

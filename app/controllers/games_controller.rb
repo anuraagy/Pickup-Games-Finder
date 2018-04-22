@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @games = Game.all
+    @games = Game.not_started
 
     respond_to do |format|
       format.js { render layout: false, content_type: 'text/javascript'}
@@ -12,9 +12,9 @@ class GamesController < ApplicationController
 
   def search
     if params[:query] != ""
-      @issues = Game.fuzzy_search(:title => params[:query])
+      @issues = Game.not_started.fuzzy_search(:title => params[:query])
     else
-      @issues = Game.all
+      @issues = Game.not_started
     end
 
     respond_to do |format|
@@ -81,18 +81,16 @@ class GamesController < ApplicationController
   end
 
   def remove_player
-    @game = Game.find(params[:game_id])
+    @game = Game.find(params[:id])
     @user = User.find(params[:user_id])
 
     if @game.check_admin?(current_user)
       @game.players.delete(@user)
-    end
 
-    respond_to do |format|
-      format.js { render layout: false, content_type: 'text/javascript'}
-      format.json {}
-      format.html {render layout: false, content_type: 'text'}
-    end
+      redirect_to @game, :notice => "The player was successfully removed!"
+    else
+      render @game, :notice => "There was an error while removing the player"
+    end    
   end
 
   def start
@@ -102,7 +100,7 @@ class GamesController < ApplicationController
       @game.state = "In Progress"
       @game.save
 
-      redirect_to @game
+      redirect_to @game, :notice => "The game has been started!"
     else
       render @game, :notice => "You are not an admin"
     end
@@ -115,7 +113,7 @@ class GamesController < ApplicationController
       @game.state = "Completed"
       @game.save
 
-      redirect_to @game
+      redirect_to @game, :notice => "The game has ended!"
     else
       render @game, :notice => "You are not an admin"
     end
