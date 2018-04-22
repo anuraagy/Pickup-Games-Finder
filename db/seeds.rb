@@ -1,13 +1,13 @@
 user_params = {
-    :name               => Faker::Name.unique.name, 
-    :email              => Faker::Internet.unique.email, 
+    :name               => "Anuraag Yachamaneni", 
+    :email              => "ayachama@purdue.edu", 
     :password           => "password",
-    :uname              => SecureRandom.urlsafe_base64(24),
+    :uname              => "anuraagy"
   }
 
 user = User.create!(user_params)
 
-1000.times do |index|  
+20.times do |index|  
   game_params = {
     :title               => "Game #{index}", 
     :description         => Faker::Lorem.paragraph, 

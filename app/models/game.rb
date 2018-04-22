@@ -12,9 +12,9 @@ class Game < ApplicationRecord
   validates :state,           :presence => true
   validates :start_time,      :presence => true
 
-  # geocoded_by :address   
-  # after_validation :geocode 
-  # after_validation :check_lat_long
+  geocoded_by :address   
+  after_validation :geocode 
+  after_validation :check_lat_long
 
   def creator
     User.find(creator_id)
