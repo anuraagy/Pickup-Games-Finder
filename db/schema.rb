@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20180415184559) do
     t.string "address", null: false
     t.string "team_one_name", null: false
     t.string "team_two_name", null: false
-    t.integer "team_one_score", null: false
-    t.integer "team_two_score", null: false
+    t.integer "team_one_score"
+    t.integer "team_two_score"
     t.integer "creator_id", null: false
     t.datetime "start_time", null: false
     t.string "state", default: "Not Started", null: false

@@ -59,6 +59,12 @@ class GamesController < ApplicationController
     @user = current_user
 
     @game.players << @user
+
+    respond_to do |format|
+      format.js { render layout: false, content_type: 'text/javascript'}
+      format.json {}
+      format.html {render layout: false, content_type: 'text'}
+    end
   end
 
   def leave_game
@@ -66,6 +72,12 @@ class GamesController < ApplicationController
     @user = current_user
 
     @game.players.delete(@user)
+
+    respond_to do |format|
+      format.js { render layout: false, content_type: 'text/javascript'}
+      format.json {}
+      format.html {render layout: false, content_type: 'text'}
+    end
   end
 
   def remove_player
@@ -75,6 +87,12 @@ class GamesController < ApplicationController
     if @game.check_admin?(current_user)
       @game.players.delete(@user)
     end
+
+    respond_to do |format|
+      format.js { render layout: false, content_type: 'text/javascript'}
+      format.json {}
+      format.html {render layout: false, content_type: 'text'}
+    end
   end
 
   def start_game
@@ -83,6 +101,12 @@ class GamesController < ApplicationController
     if @game.check_admin?(current_user)
       @game.state = "In Progress"
     end
+
+    respond_to do |format|
+      format.js { render layout: false, content_type: 'text/javascript'}
+      format.json {}
+      format.html {render layout: false, content_type: 'text'}
+    end
   end
 
   def end_game
@@ -90,6 +114,12 @@ class GamesController < ApplicationController
 
     if @game.check_admin?(current_user)
       @game.state = "Completed"
+    end
+
+    respond_to do |format|
+      format.js { render layout: false, content_type: 'text/javascript'}
+      format.json {}
+      format.html {render layout: false, content_type: 'text'}
     end
   end
 
