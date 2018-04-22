@@ -31,6 +31,7 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
 
     if @game.save
+      @game.players << current_user
       redirect_to @game
     else
       render :new

@@ -7,8 +7,6 @@ class Game < ApplicationRecord
   validates :address,         :presence => true
   validates :team_one_name,   :presence => true
   validates :team_two_name,   :presence => true
-  validates :team_one_score,  :presence => true
-  validates :team_two_score,  :presence => true
   validates :state,           :presence => true
   validates :start_time,      :presence => true
 
