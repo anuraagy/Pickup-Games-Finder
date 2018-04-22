@@ -20,13 +20,13 @@
         Starting at: 
         = @game.start_time.strftime("%c")
 
-      - if !@game.check_admin?(current_user)
+      - if !@game.check_admin?(current_user) && !@game.completed?
         - if !@game.players.include?(current_user)
           = link_to "Join Game", "javascript:void(0)", :class => "btn btn-primary", :id => "join-leave-game"
         - else
           = link_to "Leave Game", "javascript:void(0)", :class => "btn btn-primary", :id => "join-leave-game"
 
-      - if @game.check_admin?(current_user)
+      - if @game.check_admin?(current_user) && !@game.completed?
         - if @game.state == "Not Started"
           = link_to "Start Game", start_game_path(@game), :class => "btn btn-danger", :id => "start-game", :method => :POST
         - elsif @game.state == "In Progress"
@@ -40,7 +40,7 @@
       - @game.players.each do |player|
         %li.list-group-item.d-flex.justify-content-between.align-items-center{:id => "player-#{player.id}"}
           = player.name
-        - if @game.check_admin?(current_user)
+        - if @game.check_admin?(current_user) && !@game.completed?
           = link_to "Remove Player", "javascript:void(0)", :class => "btn btn-primary", :class => "remove-player", :id => "player-remove-#{player.id}"
           = hidden_field_tag :player_id, player.id, :class => "player-remove-hidden"
 

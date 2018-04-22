@@ -26,6 +26,10 @@ class Game < ApplicationRecord
     creator == user
   end
 
+  def completed?
+    state == "Completed"
+  end
+
   def check_lat_long
     errors.add(:address, ": please enter a proper address") if latitude == nil || longitude == nil
   end
