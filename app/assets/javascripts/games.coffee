@@ -5,6 +5,7 @@ class Games
     @start_button       = @element.find("#start-game")
     @end_button         = @element.find("#end-game")
     @remove_buttons     = @element.find(".remove-player")
+    @game_start_field   = @element.find("#game_start_time")
 
     @game = @element.find("#game-id")
     @user = @element.find("#user-id")

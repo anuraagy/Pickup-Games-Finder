@@ -10,9 +10,18 @@ class Game < ApplicationRecord
   validates :state,           :presence => true
   validates :start_time,      :presence => true
 
+  validate  :time_validator
+
   geocoded_by :address   
   after_validation :geocode 
   after_validation :check_lat_long
+
+
+  def time_validator
+    if start_time < Time.now + 10.minutes
+      error.add(:start_time, ": Has to be at least ten minutes from now.")
+    end
+  end
 
   def creator
     User.find(creator_id)
