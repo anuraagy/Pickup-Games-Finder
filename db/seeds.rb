@@ -5,7 +5,7 @@ user_params = {
     :uname              => "anuraagy"
   }
 
-user = User.create!(user_params)
+user = User.create(user_params)
 
 5.times do |index|  
   game_params = {
