@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require rails-ujs
 //= require underscore
+//= require datetimepicker
 //= require gmaps/google
 //= require pages
 //= require bootstrap-sprockets/

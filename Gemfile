@@ -43,6 +43,10 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'pry'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-datetimepicker'
+end
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'

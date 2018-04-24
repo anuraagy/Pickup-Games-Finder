@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actioncable (5.1.6)
       actionpack (= 5.1.6)
@@ -230,6 +231,14 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.1.6)
       sprockets-rails (>= 2.0.0)
+    rails-assets-datetimepicker (2.5.20)
+      rails-assets-jquery (>= 1.7.2)
+      rails-assets-jquery-mousewheel (>= 3.1.13)
+      rails-assets-php-date-formatter (>= 1.3.3)
+    rails-assets-jquery (3.3.1)
+    rails-assets-jquery-mousewheel (3.1.13)
+      rails-assets-jquery (>= 1.2.2)
+    rails-assets-php-date-formatter (1.3.4)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -371,6 +380,7 @@ DEPENDENCIES
   pry
   puma
   rails
+  rails-assets-datetimepicker!
   rb-readline
   rspec
   rspec-rails
