@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     post 'end',            :on => :member
   end
 
-  get '/search', :to => "pages#search"
+  get '/search',  :to => "pages#search"
+  get '/history', :to => "pages#history"
 end

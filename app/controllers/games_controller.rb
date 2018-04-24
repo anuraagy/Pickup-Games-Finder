@@ -11,10 +11,20 @@ class GamesController < ApplicationController
   end
 
   def search
+
+
     if params[:query] != ""
-      @issues = Game.not_started.fuzzy_search(:title => params[:query])
+      if history_request
+        @issues = current_user.games_played.fuzzy_search(:title => params[:query])
+      else
+        @issues = Game.not_started.fuzzy_search(:title => params[:query])
+      end
     else
-      @issues = Game.not_started
+      if history_request
+        @issues = current_user.games_played
+      else
+        @issues = Game.not_started
+      end
     end
 
     respond_to do |format|
@@ -147,5 +157,9 @@ class GamesController < ApplicationController
 
   def game_params
     params.require(:game).permit(:title, :description, :address, :team_one_name, :team_two_name, :team_one_score, :team_two_score, :creator_id, :state, :start_time)
+  end
+
+  def history_request
+    request.env["HTTP_REFERER"].include?("history")
   end
 end

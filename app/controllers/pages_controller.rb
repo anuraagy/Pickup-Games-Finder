@@ -14,4 +14,8 @@ class PagesController < ApplicationController
   def search
     @games = Game.not_started
   end
+
+  def history
+    @games = current_user.games_played
+  end
 end
