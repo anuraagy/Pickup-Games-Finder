@@ -6,13 +6,10 @@ class Pages
   constructor: (@element) ->
     @map = @element.find("#map")
     @search = @element.find("#games-search")
-
     @search.on "keyup", @filterGames
-
     @getLocation()
     @getGames()
 
-  
   filterGames: =>
     query = @search.val()
 
@@ -41,9 +38,6 @@ class Pages
         markers = handler.addMarkers(markers, {'open': true})
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
-    
-
-    
   
   getGames: =>
     $.ajax
@@ -64,8 +58,6 @@ class Pages
 
   error: (err) ->
     console.log err
-
-
 
 
 $ -> 
