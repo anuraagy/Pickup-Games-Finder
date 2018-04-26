@@ -18,8 +18,9 @@ class Game < ApplicationRecord
 
 
   def time_validator
-    if start_time < Time.now + 10.minutes
-      error.add(:start_time, ": Has to be at least ten minutes from now.")
+    # binding.pry
+    if start_time + 4.hours < Time.now.utc + 10.minutes
+      errors.add(:start_time, ": Has to be at least ten minutes from now.")
     end
   end
 
@@ -35,7 +36,7 @@ class Game < ApplicationRecord
     puts "SET EXPIRE"
 
     Game.where(:state => "Not Started").each do |game|
-      if game.start_time < Time.now
+      if game.start_time + 4.hours < Time.now
         game.state = "In Progress"
         game.save
       end

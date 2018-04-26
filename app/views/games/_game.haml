@@ -10,4 +10,7 @@
           = "Start time: #{game.start_time.strftime('%c')}"
 
     .card-footer.text-muted
-      = link_to "Join Game", game
+      - if game.state == "Not Started"
+        = link_to "Join Game", game
+      - else
+        = link_to "View Game", game
